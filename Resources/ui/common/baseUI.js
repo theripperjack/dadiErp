@@ -1,3 +1,5 @@
+Ti.include('/includes/prototype.js');
+
 var currentWin = Ti.UI.currentWindow;
 var currentView = null;
 var topBarUI = null;
@@ -101,7 +103,7 @@ function initBaseUITopBar(backBtn, rightBtn) {
 
 	if (rightBtn) {
 		// edit/save/dot/refresh/logout
-		var buttonId = 'topBar' + rightBtn.ucfirst();
+		var buttonId = 'topBar' + rightBtn.toString().ucfirst();
 		var rightBtnAttArr = {
 			topBarEdit : ['/images/common/btn_edit.png', 50],
 			topBarSave : ['/images/common/btn_save.png', 50],

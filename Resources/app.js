@@ -150,7 +150,9 @@ Ti.App.addEventListener('userLogined', function() {
 });
 
 Ti.App.addEventListener('exitApp', function() {
-	Ti.Android.currentActivity.finish();
+	if (isAndroid) {
+		Ti.Android.currentActivity.finish();
+	}
 });
 
 initLoginWin();

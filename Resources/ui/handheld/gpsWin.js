@@ -5,7 +5,7 @@ Ti.include('/ui/common/baseUI.js');
 
 var oAuth = require('/includes/oAuth');
 var Map = require('ti.map');
-
+var mapView = null;
 var pageLoaded = false;
 
 function initGpsView() {
@@ -22,7 +22,7 @@ function initGpsView() {
 			latitudeDelta : 0.01,
 			longitudeDelta : 0.01
 		};
-		var mapview = Map.createView({
+		mapView = Map.createView({
 			mapType : Map.NORMAL_TYPE,
 			region : region,
 			animate : true,
@@ -30,7 +30,19 @@ function initGpsView() {
 			userLocation : true,
 			visible : true
 		});
-		rmview.add(mapview);
+		rmview.add(mapView);
+
+		var locationButton = Ti.UI.createButton({
+			backgroundImage: '/images/cam/location_icon.png',
+			width : 24,
+			height : 24,
+			right : 10,
+			bottom : 10
+		});
+		locationButton.addEventListener('click', function(e) {
+			setLocationSelf();
+		});
+		rmview.add(locationButton);
 		currentView.add(rmview);
 	});
 
@@ -61,6 +73,19 @@ function initGpsView() {
 		submitGPS('checkout');
 	});
 	currentView.add(checkoutButton);
+}
+
+function setLocationSelf() {
+	Ti.Geolocation.getCurrentPosition(function(e) {
+		var region = {
+			latitude : e.coords.latitude,
+			longitude : e.coords.longitude,
+			animate : true,
+			latitudeDelta : 0.01,
+			longitudeDelta : 0.01
+		};
+		mapView.setLocation(region);
+	});
 }
 
 function submitGPS(ac) {

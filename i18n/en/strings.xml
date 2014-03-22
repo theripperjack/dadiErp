@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="loading_wait">Loading...</string>
+	<string name="alert_error_title">错误</string>
+	<string name="alert_tips_title">提示</string>
+	<string name="network_error">无法访问网络</string>
+	<string name="button_ok">确定</string>
+	<string name="button_cancel">取消</string>
+
+	<string name="login_title">用户登录</string>
+		<string name="login_username_hint">用户名</string>
+		<string name="login_password_hint">密码</string>
+		<string name="login_failure_title">登录失败</string>
+		<string name="login_failure_message">找不到用户或无效密码.</string>
+
+	<string name="cam_title">二维码签到</string>
+		<string name="touch_to_scan">扫描二维码</string>
+		<string name="action_options_title">签到/签退</string>
+		<string name="action_checkin">上班签到</string>
+		<string name="action_checkout">下班签退</string>
+		<string name="qrcode_invalid_title">无效二维码</string>
+		<string name="qrcode_invalid_message">这不是一个有效的二维码.</string>
+
+		<string name="checkin_success_message">签到成功</string>
+		<string name="checkout_success_message">签退成功</string>
+		<string name="checkin_fail_message">签到失败,</string>
+		<string name="checkout_fail_message">签退失败,</string>
+				
+	<string name="gps_title">GPS签到</string>
+		<string name="submit_confirm">确认在该地点提交%s吗?</string>
+
+	<string name="manual_title">手工签到</string>
+
+	<string name="error_301">无效用户名或密码</string>
+	<string name="error_302">用户验证失败,请重新登录</string>
+	<string name="error_310">无效二维码</string>
+	<string name="error_311">二维码时效已过</string>
+	<string name="error_312">签到/签退失败,请确认上次签到后是否已签退</string>
+	<string name="error_400">缺少或无效参数</string>
+	<string name="error_404">无效提交地址</string>
+</resources>

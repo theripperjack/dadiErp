@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <id>com.dadi.attendance</id>
+    <name>dadiErp</name>
+    <version>1.0</version>
+    <publisher>hjr</publisher>
+    <url>http://</url>
+    <description>not specified</description>
+    <copyright>2014 by hjr</copyright>
+    <icon>appicon.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>true</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>true</navbar-hidden>
+    <analytics>false</analytics>
+    <guid>8d0f33e3-d534-4191-8fb6-10b830d5c684</guid>
+    <property name="ti.ui.defaultunit" type="string">dip</property>
+    <property name="ti.android.fastdev" type="bool">false</property>
+    <property name="ti.android.largeHeap" type="bool">true</property>
+    <property name="ti.android.threadstacksize" type="int">51200</property>
+    <property name="ti.android.httpclient.maxbuffersize" type="int">524288</property>
+    <property name="ti.android.compilejs" type="bool">false</property>
+    <property name="ti.android.debug" type="bool">false</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+    	<manifest>
+    		<uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    		<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    		<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    		<uses-permission android:name="com.dadi.attendance.permission.MAPS_RECEIVER"/>
+    		<permission android:name="com.dadi.attendance.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+    		<application android:debuggable="false">
+                <activity
+                    android:configChanges="keyboardHidden|orientation"
+                    android:label="dadiErp"
+                    android:name="dadiErpActivity" android:screenOrientation="portrait">
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN"/>
+                        <action android:name="android.intent.category.LAUNCHER"/>
+                    </intent-filter>
+                </activity>
+    			<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value=""/>
+    		</application>
+            <uses-sdk android:minSdkVersion="15"/>
+            <supports-screens android:anyDensity="false"
+                android:largeScreens="true"
+                android:normalScreens="false" android:resizeable="false"
+                android:smallScreens="false" android:xlargeScreens="true"/>
+    	</manifest>
+    </android>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="android">com.mwaysolutions.barcode</module>
+        <module platform="iphone">com.acktie.mobile.ios.qr</module>
+        <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+        <target device="ipad">true</target>
+        <target device="iphone">true</target>
+        <target device="mobileweb">false</target>
+        <target device="tizen">false</target>
+    </deployment-targets>
+    <sdk-version>3.2.1.GA</sdk-version>
+</ti:app>

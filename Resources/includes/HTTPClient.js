@@ -51,12 +51,14 @@ function ajaxQuery(url, type, params, header, qtype) {
 			}
 			if ( typeof responseData.meta === 'undefined') {
 				TiToast.show(L('net_error_message'));
+				return null;
 			} else {
 				return responseData;
 			}
 		}
 		var now_time = new Date().getTime();
 		if (now_time > expire_time) {
+			/*
 			counter++;
 			if (counter >= 3) {
 				var a = Titanium.UI.createAlertDialog({
@@ -74,6 +76,8 @@ function ajaxQuery(url, type, params, header, qtype) {
 			} else {
 				TiToast.show(L('net_error_message'));
 			}
+			*/
+			TiToast.show(L('net_error_message'));
 			return null;
 		}
 	}

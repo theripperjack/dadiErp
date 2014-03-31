@@ -15,6 +15,13 @@ function initGpsView() {
 	});
 
 	Ti.Geolocation.getCurrentPosition(function(e) {
+		if (e.error) {
+			alert(e.error);
+			Ti.App.fireEvent('tabChange', {
+				tabName : 'cam'
+			});
+			return;
+		}
 		var region = {
 			latitude : e.coords.latitude,
 			longitude : e.coords.longitude,
@@ -33,7 +40,7 @@ function initGpsView() {
 		rmview.add(mapView);
 
 		var locationButton = Ti.UI.createButton({
-			backgroundImage: '/images/cam/location_icon.png',
+			backgroundImage : '/images/cam/location_icon.png',
 			width : 24,
 			height : 24,
 			right : 10,

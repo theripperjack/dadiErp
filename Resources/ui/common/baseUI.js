@@ -80,7 +80,7 @@ function initBaseUITopBar(backBtn, rightBtn) {
 		top : 10,
 		left : 65,
 		right : 65,
-		height : 22,
+		height : 24,
 		zIndex : 105,
 		text : currentWin.getTitle()
 	});
@@ -166,7 +166,7 @@ function initBaseUINavBar(navActive, winTarget) {
 		height : 48,
 		right : 36,
 		zIndex : 105,
-		className : (navActive == 'manual' ? '/images/common/manual_active.png' : '/images/common/manual_inactive.png'),
+		backgroundImage : (navActive == 'manual' ? '/images/common/manual_active.png' : '/images/common/manual_inactive.png'),
 		active : (navActive == 'manual'),
 		tabName : 'manual'
 	});
@@ -182,7 +182,7 @@ function initBaseUINavBar(navActive, winTarget) {
 		height : 70,
 		zIndex : 105,
 		verticalAlign : 'center',
-		className : (navActive == 'cam' ? '/images/common/cam_active.png' : '/images/common/cam_inactive.png'),
+		backgroundImage : (navActive == 'cam' ? '/images/common/cam_active.png' : '/images/common/cam_inactive.png'),
 		active : (navActive == 'cam'),
 		tabName : 'cam'
 	});
@@ -220,4 +220,13 @@ function hideAndShowTopBar() {
 		}
 		innerBaseUI.topBarHeightBarVisable = !innerBaseUI.topBarHeightBarVisable;
 	}
+}
+
+function removeAllChildren(viewObj) {
+	/*
+	 var children = viewObj.children.slice(0);
+	 for (var i = 0; i < children.length; i++) {
+	 viewObj.remove(children[i]);
+	 }
+	 */
 }

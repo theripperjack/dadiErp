@@ -6,6 +6,7 @@ var pageLoaded = false;
 var qrCodeWindow = null;
 var qrCodeView = null;
 var TiBar = null;
+
 if (isAndroid) {
 	TiBar = require("com.mwaysolutions.barcode");
 } else {
@@ -116,18 +117,20 @@ function scanQRcode(qrcode) {
 	var f4c = qrcode.toString().substring(0, 4).toUpperCase();
 	if (f4c == 'DDA:') {
 		var acode = qrcode.toString().substring(4);
-		var opts = {
+		var dialog = Ti.UI.createOptionDialog({
 			cancel : 2,
 			options : [L('action_checkin'), L('action_checkout'), L('button_cancel')],
 			selectedIndex : 2,
 			title : L('action_options_title')
-		};
-		var dialog = Ti.UI.createOptionDialog(opts);
+		});
 		dialog.addEventListener('click', function(e) {
-			if (e.index != e.cancel) {
+			if (e.index != 2) {
+				var label_view = createUploadingText();
+				currentView.add(label_view);
 				Ti.Geolocation.getCurrentPosition(function(gps) {
 					var act = e.index == 0 ? 'qrcodeCheckin' : 'qrcodeCheckout';
 					var act2 = e.index == 0 ? 'checkin' : 'checkout';
+					//alert(e.index + ' ' + act + ' ' + act2 + ' ' + acode + ' ' + gps.coords.latitude + ' ' + gps.coords.longitude + ' ' + Ti.Platform.id);
 					var res = oAuth.ajaxRequest(act, {
 						'code' : acode,
 						'device' : Ti.Platform.id,
@@ -138,9 +141,8 @@ function scanQRcode(qrcode) {
 					if (!res) {
 						msg_lg = L(act2 + '_fail_message') + oAuth.getErrorMsg();
 					}
-					Ti.UI.createAlertDialog({
-						message : msg_lg
-					}).show();
+					alert(msg_lg);
+					currentView.remove(label_view);
 				});
 			}
 		});
@@ -155,13 +157,36 @@ function scanQRcode(qrcode) {
 	return qrcode;
 }
 
+function createUploadingText() {
+	var label_view = Ti.UI.createView({
+		backgroundImage : '/images/common/tbg.png',
+		height : 38,
+		top : 0,
+		zIndex : 15
+	});
+	var update_label = Ti.UI.createLabel({
+		top : 3,
+		left : 5,
+		right : 5,
+		font : {
+			fontSize : 14
+		},
+		color : '#ffffff',
+		text : '提交中,请稍候...'
+	});
+	label_view.add(update_label);
+	return label_view;
+}
+
 if (!pageLoaded) {
 	pageLoaded = true;
 	innerBaseUI.initNavBar = true;
 	initBaseUITopBar(false, false);
+
 	if (isAndroid) {
 		initBaseUINavBar('cam');
 	}
+
 	initBaseView();
 	initCamView();
 }

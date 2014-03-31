@@ -59,24 +59,24 @@ function ajaxQuery(url, type, params, header, qtype) {
 		var now_time = new Date().getTime();
 		if (now_time > expire_time) {
 			/*
-			counter++;
-			if (counter >= 3) {
-				var a = Titanium.UI.createAlertDialog({
-					title : 'Failed',
-					message : L('net_error_message2'),
-					buttonNames : ['OK', 'Cancel']
-				}).show();
-				a.addEventListener('click', function(e) {
-					if (e.index == 0) {
-						Ti.App.fireEvent('logout');
-					}
-					a.hide();
-				});
-				counter = 0;
-			} else {
-				TiToast.show(L('net_error_message'));
-			}
-			*/
+			 counter++;
+			 if (counter >= 3) {
+			 var a = Titanium.UI.createAlertDialog({
+			 title : 'Failed',
+			 message : L('net_error_message2'),
+			 buttonNames : ['OK', 'Cancel']
+			 }).show();
+			 a.addEventListener('click', function(e) {
+			 if (e.index == 0) {
+			 Ti.App.fireEvent('logout');
+			 }
+			 a.hide();
+			 });
+			 counter = 0;
+			 } else {
+			 TiToast.show(L('net_error_message'));
+			 }
+			 */
 			TiToast.show(L('net_error_message'));
 			return null;
 		}

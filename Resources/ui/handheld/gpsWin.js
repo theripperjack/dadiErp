@@ -34,8 +34,7 @@ function initGpsView() {
 			region : region,
 			animate : true,
 			regionFit : true,
-			userLocation : true,
-			visible : true
+			userLocation : true
 		});
 		rmview.add(mapView);
 
@@ -57,7 +56,7 @@ function initGpsView() {
 
 	var checkinButton = Ti.UI.createButton({
 		title : L('action_checkin'),
-		backgroundColor : '#BCFF6D',
+		backgroundColor : '#262436',
 		borderRadius : 5,
 		bottom : 5,
 		height : 40,
@@ -71,7 +70,7 @@ function initGpsView() {
 
 	var checkoutButton = Ti.UI.createButton({
 		title : L('action_checkout'),
-		backgroundColor : '#6DFFE2',
+		backgroundColor : '#503C53',
 		borderRadius : 5,
 		bottom : 5,
 		height : 40,
@@ -105,7 +104,9 @@ function submitGPS(ac) {
 		buttonNames : [L('button_ok'), L('button_cancel')]
 	});
 	dialog.addEventListener('click', function(e) {
-		if (e.index != e.cancel) {
+		if (e.index == 0) {
+			var label_view = createUploadingText();
+			currentView.add(label_view);
 			Ti.Geolocation.getCurrentPosition(function(gps) {
 				var act = ac == 'checkin' ? 'gpsCheckin' : 'gpsCheckout';
 				var res = oAuth.ajaxRequest(act, {
@@ -121,10 +122,32 @@ function submitGPS(ac) {
 					title : L('alert_tips_title'),
 					message : msg_lg
 				}).show();
+				currentView.remove(label_view);
 			});
 		}
 	});
 	dialog.show();
+}
+
+function createUploadingText() {
+	var label_view = Ti.UI.createView({
+		backgroundImage : '/images/common/tbg.png',
+		height : 38,
+		top : 0,
+		zIndex : 15
+	});
+	var update_label = Ti.UI.createLabel({
+		top : 3,
+		left : 5,
+		right : 5,
+		font : {
+			fontSize : 14
+		},
+		color : '#ffffff',
+		text : '提交中,请稍候...'
+	});
+	label_view.add(update_label);
+	return label_view;
 }
 
 currentWin.addEventListener('open', function() {

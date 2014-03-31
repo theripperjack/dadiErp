@@ -27,7 +27,7 @@ function initLoginView() {
 	});
 
 	var username_input = Ti.UI.createTextField({
-		color : '#7F8283',
+		color : '#000000',
 		borderStyle : Ti.UI.INPUT_BORDERSTYLE_NONE,
 		keyboardType : Ti.UI.KEYBOARD_EMAIL,
 		returnKeyType : Ti.UI.RETURNKEY_NEXT,
@@ -45,7 +45,7 @@ function initLoginView() {
 	login_box.add(username_input);
 
 	var password_input = Ti.UI.createTextField({
-		color : '#7F8283',
+		color : '#000000',
 		borderStyle : Ti.UI.INPUT_BORDERSTYLE_NONE,
 		returnKeyType : Ti.UI.RETURNKEY_DONE,
 		passwordMask : true,

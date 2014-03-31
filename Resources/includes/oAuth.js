@@ -42,9 +42,7 @@ exports.ajaxRequest = function(apiName, params) {
 			if (responseData.response && responseData.response.errors) {
 				oAuthErrors = responseData.response.errors;
 			}
-			if (responseData.meta.code != 200) {
-				oAuthErrorNo = responseData.meta.code;
-			}
+			oAuthErrorNo = (responseData.meta.code != 200) ? responseData.meta.code : null;
 		}
 		return (responseData && responseData.meta.code == 200) ? (responseData.response ? responseData.response : true) : false;
 	}
@@ -59,5 +57,5 @@ exports.getErrorNo = function() {
 };
 
 exports.getErrorMsg = function() {
-	return L('error_' + oAuthErrorNo);
+	return oAuthErrorNo ? L('error_' + oAuthErrorNo) : '';
 };

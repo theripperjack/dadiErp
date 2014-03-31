@@ -30,7 +30,7 @@ var APIConfig = {
 	},
 	'qrcodeCheckout' : {
 		'method' : 'POST',
-		'url' : '/hr/attendance/checkin',
+		'url' : '/hr/attendance/checkout',
 		'params' : {
 			'code' : '',
 			'lat' : '',
@@ -40,7 +40,7 @@ var APIConfig = {
 	},
 	'gpsCheckout' : {
 		'method' : 'POST',
-		'url' : '/hr/attendance/checkin',
+		'url' : '/hr/attendance/checkout',
 		'params' : {
 			'lat' : '',
 			'lng' : '',

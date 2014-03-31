@@ -141,7 +141,10 @@ function scanQRcode(qrcode) {
 					if (!res) {
 						msg_lg = L(act2 + '_fail_message') + oAuth.getErrorMsg();
 					}
-					alert(msg_lg);
+					Ti.UI.createAlertDialog({
+						title : L('alert_tips_title'),
+						message : msg_lg
+					}).show();
 					currentView.remove(label_view);
 				});
 			}

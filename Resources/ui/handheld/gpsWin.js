@@ -39,17 +39,19 @@ function initGpsView() {
 		});
 		rmview.add(mapView);
 
-		var locationButton = Ti.UI.createButton({
-			backgroundImage : '/images/cam/location_icon.png',
-			width : 24,
-			height : 24,
-			right : 10,
-			bottom : 10
-		});
-		locationButton.addEventListener('click', function(e) {
-			setLocationSelf();
-		});
-		rmview.add(locationButton);
+		if (!isAndroid) {
+			var locationButton = Ti.UI.createButton({
+				backgroundImage : '/images/cam/location_icon.png',
+				width : 24,
+				height : 24,
+				right : 10,
+				bottom : 10
+			});
+			locationButton.addEventListener('click', function(e) {
+				setLocationSelf();
+			});
+			rmview.add(locationButton);
+		}
 		currentView.add(rmview);
 	});
 

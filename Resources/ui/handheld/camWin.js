@@ -120,10 +120,9 @@ function scanQRcode(qrcode) {
 			cancel : 2,
 			options : [L('action_checkin'), L('action_checkout'), L('button_cancel')],
 			selectedIndex : 2,
-			destructive : 0,
 			title : L('action_options_title')
 		};
-		var dialog = Ti.UI.createOptionDialog(opts).show();
+		var dialog = Ti.UI.createOptionDialog(opts);
 		dialog.addEventListener('click', function(e) {
 			if (e.index != e.cancel) {
 				Ti.Geolocation.getCurrentPosition(function(gps) {
@@ -140,12 +139,12 @@ function scanQRcode(qrcode) {
 						msg_lg = L(act2 + '_fail_message') + oAuth.getErrorMsg();
 					}
 					Ti.UI.createAlertDialog({
-						title : L('alert_tips_title'),
 						message : msg_lg
 					}).show();
 				});
 			}
 		});
+		dialog.show();
 
 	} else {
 		Ti.UI.createAlertDialog({
